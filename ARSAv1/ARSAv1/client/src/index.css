@@ -1,0 +1,172 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(164, 100%, 42%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(164, 100%, 42%);
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: hsl(240, 10%, 3.9%);
+  --foreground: hsl(0, 0%, 98%);
+  --card: hsl(240, 10%, 3.9%);
+  --card-foreground: hsl(0, 0%, 98%);
+  --popover: hsl(240, 10%, 3.9%);
+  --popover-foreground: hsl(0, 0%, 98%);
+  --primary: hsl(164, 100%, 42%);
+  --primary-foreground: hsl(0, 0%, 0%);
+  --secondary: hsl(240, 3.7%, 15.9%);
+  --secondary-foreground: hsl(0, 0%, 98%);
+  --muted: hsl(240, 3.7%, 15.9%);
+  --muted-foreground: hsl(240, 5%, 64.9%);
+  --accent: hsl(240, 3.7%, 15.9%);
+  --accent-foreground: hsl(0, 0%, 98%);
+  --destructive: hsl(0, 62.8%, 30.6%);
+  --destructive-foreground: hsl(0, 0%, 98%);
+  --border: hsl(240, 3.7%, 15.9%);
+  --input: hsl(240, 3.7%, 15.9%);
+  --ring: hsl(164, 100%, 42%);
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Custom styles for ReconHound */
+@layer components {
+  .text-primary {
+    color: hsl(164, 100%, 42%);
+  }
+  
+  .bg-primary {
+    background-color: hsl(164, 100%, 42%);
+  }
+  
+  .border-primary {
+    border-color: hsl(164, 100%, 42%);
+  }
+  
+  .hover\:bg-primary\/90:hover {
+    background-color: hsl(164, 100%, 42%, 0.9);
+  }
+  
+  .focus\:border-primary:focus {
+    border-color: hsl(164, 100%, 42%);
+  }
+  
+  .hover\:border-primary:hover {
+    border-color: hsl(164, 100%, 42%);
+  }
+}
+
+/* Progress bar animations */
+@keyframes progress {
+  0% { width: 0%; }
+  100% { width: var(--progress-width); }
+}
+
+.progress-bar {
+  animation: progress 0.3s ease-out;
+}
+
+/* Scanning animation */
+@keyframes scan-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.scan-pulse {
+  animation: scan-pulse 2s ease-in-out infinite;
+}
+
+/* WebSocket connection indicator */
+.connection-indicator {
+  position: relative;
+}
+
+.connection-indicator::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(0, 212, 170, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 212, 170, 0);
+  }
+}
+
+/* Vulnerability severity colors */
+.severity-critical {
+  background-color: hsl(0, 84%, 60%);
+  color: white;
+}
+
+.severity-high {
+  background-color: hsl(24, 95%, 53%);
+  color: white;
+}
+
+.severity-medium {
+  background-color: hsl(45, 93%, 58%);
+  color: black;
+}
+
+.severity-low {
+  background-color: hsl(142, 76%, 36%);
+  color: white;
+}
+
+/* Risk score colors */
+.risk-critical {
+  color: hsl(0, 84%, 60%);
+}
+
+.risk-high {
+  color: hsl(24, 95%, 53%);
+}
+
+.risk-medium {
+  color: hsl(45, 93%, 58%);
+}
+
+.risk-low {
+  color: hsl(142, 76%, 36%);
+}
